@@ -19,14 +19,30 @@ body {
 }
 
 .title-icon {
-  width: 200px;
-  height:200px;
-  object-fit: contain;
+  width: 36px;   /* bigger icons */
+  height: 36px;
+  flex-shrink: 0;
 }
 
 .title-row h1 {
   text-align: center;
   flex: 1;
+}
+
+.title-text {
+  text-align: right;
+  line-height: 1.2;
+}
+
+.title-text span {
+  display: block;
+  font-weight: bold;
+}
+
+.title-text small {
+  display: block;
+  font-size: 0.8em;
+  color: #ccc;
 }
 
 /* --- Placeholder --- */
@@ -128,6 +144,7 @@ body {
   text-align: center;
   flex: 0 0 auto;
   min-width: 120px;
+  transition: width 0.3s ease, margin 0.3s ease;
 }
 
 .part.expanded {
@@ -163,8 +180,10 @@ body {
 .page-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0 0 0 0; /* can leave horizontal padding if you want */
+  border: 0;        /* even a transparent border works */
+  min-height: 0.1px; /* optional tiny height */
 }
 
 main {
@@ -172,10 +191,18 @@ main {
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  main {
+    padding: 15px; /* or even 10–15px if you prefer */
+  }
+}
+
+
 /* --- Example Rows --- */
 .example-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* vertically centers the image and text */
+  justify-content: center; /* optional: evenly spaces them horizontally */
   gap: 20px;
   margin: 30px 0;
   flex-wrap: nowrap;
@@ -189,6 +216,9 @@ main {
 .example-text {
   flex: 1;
   min-width: 0; /* prevents overflow */
+    max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* --- Search Bar --- */
@@ -219,6 +249,16 @@ main {
   overflow: hidden;      /* hide overflowing parts */
   padding: 0 90px;       /* space on left/right for arrows */
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .scroll-arrow {
+    display: none !important;
+  }
+
+  .gif-row-wrapper {
+    padding: 0 10px; /* tighten sides for mobile */
+  }
 }
 
 .parts-row {
@@ -278,22 +318,9 @@ main {
   right: 0px;              /* sits in padding area */
 }
 
-/* Mobile-friendly GIF sizes */
-@media (max-width: 768px) {
-  .part-placeholder {
-    width: 80px;   /* smaller GIFs for phones */
-    height: auto;  /* keep aspect ratio */
-  }
-
-  /* Optional: reduce the highlighted GIF scale */
-  .part-placeholder.highlighted {
-    transform: scale(1.2);  /* smaller than desktop */
-  }
-}
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .scroll-arrow {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -305,16 +332,6 @@ main {
   padding: 10px 0;                 /* top/bottom padding for touch */
 }
 
-@media (max-width: 480px) {
-  .part-placeholder {
-    width: 60px; /* even smaller for compact phones */
-  }
-
-  .parts-row {
-    gap: 8px;
-    padding: 8px 0;
-  }
-}
 .title-bar {
   position: fixed;
   top: 0;
@@ -331,6 +348,7 @@ main {
   backdrop-filter: blur(5px); /* optional: adds a nice frosted-glass look */
   transition: transform 0.3s ease;
   transform: translateY(0);
+  flex-wrap: wrap;       /* wrap if screen is very narrow */
 }
 
 /* hidden state - slides the title bar up out of view */
@@ -355,20 +373,31 @@ main {
 
 .title-buttons {
   display: flex;
-  flex-direction: column; /* stack buttons vertically */
-  gap: 5px;
+  gap: 20px;
+  align-items: center;
 }
 
 .title-button a {
-  font-weight: bold;
-  color: white;
   text-decoration: none;
+  color: inherit;
+}
 }
 
 .title-button p {
   margin: 0;
   font-size: 0.85em;
   color: #ccc;
+}
+
+.title-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 6px 12px;
+  background-color: #333;
+  border-radius: 8px;
+  min-width: 90px; /* ensures both buttons align neatly */
 }
 
 .page-title h1 {
@@ -408,15 +437,118 @@ main {
   display: block;
 }
 
-.part video,
-.part img {
-  width: 300px;
-  transition: all 0.3s ease;
+.part video {
+  width: 400px;
+  transition: width 0.3s ease, height 0.3s ease;
   cursor: pointer;
 }
 
-.part.expanded video,
-.part.expanded img {
-  width: 800px;
+.part.expanded {
+  width: 90vw;          /* the container expands */
+  max-width: 600px;     /* cap on desktop */
+  position: relative;
   z-index: 10;
+  margin: 0 auto;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.part.expanded video {
+  width: 100%;          /* video fills the container */
+  height: auto;         /* keep aspect ratio */
+}
+
+@media (max-width: 480px) {
+  .part-placeholder {
+    width: 60px; /* even smaller for compact phones */
+  }
+
+  .parts-row {
+    gap: 2px;
+    padding: 2px 0;
+  }
+    .part video {
+    width: 100px;   /* or a percentage if you prefer */
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .split-container {
+    flex-direction: column;   /* stack vertically */
+    align-items: center;      /* center all children horizontally */
+    gap: 20px;                /* optional, smaller gap on mobile */
+  }
+
+  .right-side video {
+    width: 100%;             /* scale to container width */
+    max-width: 300px;        /* optional max width */
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title h1 {
+    font-size: 1.2rem; /* smaller so it fits in the row */
+  }
+}
+
+.parts-row .part {
+  flex: 0 0 auto;          /* prevent flex items from shrinking unpredictably */
+  transition: all 0.3s ease;
+}
+
+.button-wrapper {
+  text-align: center; /* centers inline-flex child */
+}
+
+.cults-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  width: 140px;          /* fixed width to match other buttons */
+  background-color: #2f2f2f;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+
+.cults-button:hover {
+  background-color: #666;
+  transform: scale(1.05);
+}
+
+.cults-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.etsy-button {
+  display: inline-flex;       /* side by side icon + text */
+  align-items: center;        /* vertical alignment */
+  gap: 8px;                   /* space between icon and text */
+  padding: 8px 16px;          /* button size */
+  width: 140px;    
+  background-color: #2f2f2f;     /* grey like other buttons */
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.etsy-button:hover {
+  background-color: #666;
+  transform: scale(1.05);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  display: block;             /* prevents spacing issues */
 }

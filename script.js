@@ -50,6 +50,75 @@ try {
   safeLog('expand init failed', err);
 }
 
+// Safer expand() using transform scale and waiting for transitionend to scroll
+try {
+  function expand(el) {
+    console.log('expand() clicked (safe version)');
+    try {
+      const parent = el.closest('.part');
+      if (!parent) return;
+
+      const row = parent.closest('.parts-row');
+      if (!row) return;
+
+      const allParts = Array.from(row.querySelectorAll('.part'));
+      const isExpanded = parent.classList.contains('expanded');
+
+      if (isExpanded) {
+        // collapse: remove expanded and any dim classes
+        parent.classList.remove('expanded');
+        allParts.forEach(p => p.classList.remove('dimmed'));
+        return;
+      }
+
+      // collapse others first
+      allParts.forEach(p => p.classList.remove('expanded'));
+      // optionally dim siblings for focus
+      allParts.forEach(p => p.classList.add('dimmed'));
+      parent.classList.remove('dimmed');
+
+      // expand the clicked one
+      parent.classList.add('expanded');
+
+      // Choose the element we scale (image/video/placeholder)
+      const media = parent.querySelector('img, video, .part-placeholder');
+      if (!media) return;
+
+      // Wait for transform transition to finish on the media, then center it
+      const onTransitionEnd = (ev) => {
+        // only react to the transform transition on the media
+        if (ev.propertyName !== 'transform') return;
+        media.removeEventListener('transitionend', onTransitionEnd);
+
+        // compute new position and scroll smoothly to center
+        const rowRect = row.getBoundingClientRect();
+        const elRect = media.getBoundingClientRect();
+        const offset = (elRect.left + elRect.width / 2) - (rowRect.left + rowRect.width / 2);
+        row.scrollBy({ left: offset, behavior: 'smooth' });
+      };
+
+      // If the element is already mid-transition, attach listener anyway
+      media.addEventListener('transitionend', onTransitionEnd);
+
+      // Fallback: if transitionend doesn't fire (old browsers), set a safety timeout
+      setTimeout(() => {
+        media.removeEventListener('transitionend', onTransitionEnd);
+        const rowRect = row.getBoundingClientRect();
+        const elRect = media.getBoundingClientRect();
+        const offset = (elRect.left + elRect.width / 2) - (rowRect.left + rowRect.width / 2);
+        row.scrollBy({ left: offset, behavior: 'smooth' });
+      }, 500);
+    } catch (err) {
+      console.error('[script.js] expand (safe) error', err);
+    }
+  }
+
+  window.expand = expand;
+  safeLog('expand() (safe) initialized');
+} catch (err) {
+  safeLog('expand(init) failed', err);
+}
+
 
   // --- Scroll Arrows ---
   let arrowWrappers = [];

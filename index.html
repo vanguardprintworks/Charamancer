@@ -10,27 +10,41 @@
 
 <body>
 
-  <!-- Title Bar -->
-  <div class="title-bar">
-    <div class="company-icon">
-      <img src="Icons/Icon.png" alt="Company Logo">
+<div class="title-bar">
+  <div class="company-icon">
+    <img src="Icons/Icon.png" alt="Company Logo">
+  </div>
+
+  <div class="title-buttons">
+
+    <!-- Cults3D -->
+    <div class="title-button">
+      <a href="https://cults3d.com/en/design-collections/VanguardPrintworks/charamancer" target="_blank">
+        <div class="title-btn-content">
+          <div class="title-text">
+            <small>Get files for<br>3D printing</small>
+          </div>
+          <img src="Icons/Cults.svg" alt="Cults3D Logo" class="title-icon">
+        </div>
+      </a>
     </div>
 
-    <div class="title-buttons">
-      <div class="title-button">
-        <a href="https://cults3d.com/en/design-collections/VanguardPrintworks/charamancer" target="_blank">Cults3D</a>
-        <p>Get files for 3D printing</p>
-      </div>
-      <div class="title-button">
-        <a href="https://www.etsy.com/" target="_blank">Etsy</a>
-        <p>Get physical miniatures</p>
-      </div>
+    <!-- Etsy -->
+    <div class="title-button">
+      <a href="https://www.etsy.com/" target="_blank">
+        <div class="title-btn-content">
+          <div class="title-text">
+            <small>Get physical<br>miniatures</small>
+          </div>
+          <img src="Icons/Etsy.svg" alt="Etsy Logo" class="title-icon">
+        </div>
+      </a>
     </div>
 
-    <div class="page-title">
-      <h1>Charamancer</h1>
-    </div>
-  </div> <!-- end title-bar -->
+  </div>
+</div>
+
+<!-- end title-bar -->
 
     <div class="page-container">
     
@@ -38,6 +52,9 @@
 
     <!-- Intro Text -->
     <main>
+      <div class="page-title">
+    <h1>Charamancer</h1>
+  </div>
       <p>Charamancer is a modular system creating custom miniatures for tabletop role-playing games such as
         Dungeons & Dragons. You can select the head, armour, and weapons as individual parts, then assemble them in
         the pose you want, with universal interfaces guaranteeing everything fits together.</p>
@@ -57,15 +74,31 @@
     <p>If you own a 3D printer, you can buy the digital files for parts, allowing you to print them as many times as
       you like, making upgrading characters and building mobs of enemies a breeze. Find all the parts on the
       official Cults3D store.</p>
-    <a href="https://cults3d.com/en/design-collections/VanguardPrintworks/charamancer" target="_blank">
-      <img src="https://tse4.mm.bing.net/th/id/OIP.8g6RS3dwkg3qbgLsXdkTGQHaG4?cb=12&pid=Api"
-        alt="Cults3D logo" width="120" style="display:block; margin:0 auto;">
-    </a>
+
+      <div class="button-wrapper">
+  <a href="https://cults3d.com/en/design-collections/VanguardPrintworks/charamancer" 
+     target="_blank" 
+     class="social cults-button" 
+     aria-label="Cults3D store">
+    <img src="Icons/Cults.svg" alt="Cults3D logo" class="cults-icon">
+    <span class="cults-text">Cults3D store</span>
+  </a>
+</div>
+
+
     <p>If you want a physical model of a character you can purchase it through the Etsy store. You'll need to
       complete a form detailing which parts you want and this website will help you choose. All the options are
       down below.</p>
-    <button class="etsy-btn">Etsy Store</button>
+      <div class="button-wrapper">
+<a href="https://www.etsy.com/shop/VanguardPrintworks" 
+   target="_blank" 
+   class="social etsy-button" 
+   aria-label="Etsy Store">
+  <img src="Icons/Etsy.svg" alt="Etsy logo" class="social-icon">
+  <span>Etsy Store</span>
+</a>
 
+</div>
     <p>If you need a little inspiration check out some completed designs.</p>
     <div class="button-container">
       <a href="inspiration.html" target="_blank" class="button">See Examples</a>
@@ -74,16 +107,36 @@
     <p>New options are being released all the time. Be sure to follow the channels below so you don’t miss anything.
       I'm always keen to hear suggestions for new options, so don't hesitate to get in touch.</p>
 
-    <!-- Social Links -->
-    <div class="social-row" role="navigation" aria-label="Social links">
-      <a href="https://bsky.app/profile/vanguardprintworks.bsky.social" target="_blank" class="social"
-        aria-label="Bluesky">BS</a>
-      <a href="https://www.reddit.com/user/VanguardPrintworks/" target="_blank" class="social"
-        aria-label="Reddit">RD</a>
-      <a href="https://www.instagram.com/vanguard_printworks/" target="_blank" class="social"
-        aria-label="Instagram">IG</a>
-      <a href="https://mailchi.mp/6722549b0dca/charamancer-updates" class="social" aria-label="Mailing list">✉</a>
-    </div>
+<!-- Social Links -->
+<div class="social-row" role="navigation" aria-label="Social links">
+  <a href="https://bsky.app/profile/vanguardprintworks.bsky.social" 
+     target="_blank" 
+     class="social" 
+     aria-label="Bluesky">
+    <img src="Icons/bluesky.svg" alt="Bluesky" width="24" height="24">
+  </a>
+
+  <a href="https://www.reddit.com/user/VanguardPrintworks/" 
+     target="_blank" 
+     class="social" 
+     aria-label="Reddit">
+    <img src="Icons/reddit.svg" alt="Reddit" width="24" height="24">
+  </a>
+
+  <a href="https://www.instagram.com/vanguard_printworks/" 
+     target="_blank" 
+     class="social" 
+     aria-label="Instagram">
+    <img src="Icons/instagram.svg" alt="Instagram" width="24" height="24">
+  </a>
+
+  <a href="https://mailchi.mp/6722549b0dca/charamancer-updates" 
+     class="social" 
+     aria-label="Mailing list">
+    <img src="Icons/mailing.svg" alt="Mailing list" width="24" height="24" fill="white">
+  </a>
+</div>
+
   </div>
 
   <!-- Right side: GIF -->
