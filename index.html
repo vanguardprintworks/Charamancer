@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charamancer</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Icons/Icon.png">
 </head>
 
 <body>
@@ -52,9 +53,7 @@
 
     <!-- Intro Text -->
     <main>
-      <div class="page-title">
     <h1>Charamancer</h1>
-  </div>
       <p>Charamancer is a modular system creating custom miniatures for tabletop role-playing games such as
         Dungeons & Dragons. You can select the head, armour, and weapons as individual parts, then assemble them in
         the pose you want, with universal interfaces guaranteeing everything fits together.</p>
@@ -65,6 +64,12 @@
       <p>Iconic characters from your favourite games, movies, and television are available, perfect to act as
         companions and bosses in your games. And of course, the modular parts mean once they're defeated their
         equipment can be wielded by the victorious heroes!</p>
+
+<div class="image-row">
+  <img src="images/Inspiration/ElvenRoguePng.png" alt="Elven Rogue">
+  <img src="images/Inspiration/HolyWarriorPng.png" alt="Holy Warrior">
+  <img src="images/Inspiration/LichPng.png" alt="Lich">
+</div>
 
 <!-- Container for split layout -->
 <div class="split-container">
@@ -79,7 +84,7 @@
   <a href="https://cults3d.com/en/design-collections/VanguardPrintworks/charamancer" 
      target="_blank" 
      class="social cults-button" 
-     aria-label="Cults3D store">
+     aria-label="Cults3D Store">
     <img src="Icons/Cults.svg" alt="Cults3D logo" class="cults-icon">
     <span class="cults-text">Cults3D store</span>
   </a>
@@ -210,7 +215,15 @@
             </video>
                 <p class="part-label">Skull with Helmet</p>
               </div>
+            <div class="part coming-soon">
+              <div class="placeholder">
+                <span>Coming Soon</span>
               </div>
+              <p class="part-label">Rot Goddess</p>
+            </div>
+
+
+       </div>
         <!-- scroll arrows -->
         <div class="scroll-arrow left"></div>
         <div class="scroll-arrow right"></div>
@@ -238,10 +251,13 @@
             <p class="part-label">Short Sword</p>
           </div>
           <div class="part" data-tags="axe,battlaxe,battle axe" onclick="expand(this)">
-            <video autoplay loop muted playsinline>
-            <source src="images/Weapons/BattleAxe.mp4" type="video/mp4">
-            </video>
-            <p class="part-label">Battle Axe</p>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline>
+                  <source src="images/Weapons/BattleAxe.mp4" type="video/mp4">
+                </video>
+                <div class="tag-2h">2-Handed Option</div>
+              </div>
+              <p class="part-label">Battle Axe</p>
           </div>
           <div class="part" data-tags="bow,longbow,long bow" onclick="expand(this)">
             <video autoplay loop muted playsinline>
@@ -273,17 +289,50 @@
             </video>
             <p class="part-label">Club</p>
           </div>
-          <div class="part" data-tags="dagger" onclick="expand(this)">
+          <div class="part" data-tags="dagger,knife" onclick="expand(this)">
             <video autoplay loop muted playsinline>
             <source src="images/Weapons/Dagger.mp4" type="video/mp4">
             </video>
             <p class="part-label">Dagger</p>
           </div>
+          <div class="part" data-tags="dagger,knife" onclick="expand(this)">
+            <video autoplay loop muted playsinline>
+            <source src="images/Weapons/DaggerReverse.mp4" type="video/mp4">
+            </video>
+            <p class="part-label">Dagger (Reverse Grip)</p>
+          </div>
           <div class="part" data-tags="sword,longsword,long sword" onclick="expand(this)">
+              <div class="video-wrapper">
             <video autoplay loop muted playsinline>
             <source src="images/Weapons/LongSword.mp4" type="video/mp4">
             </video>
+                <div class="tag-2h">2-Handed Option</div>
+              </div>
             <p class="part-label">Long Sword</p>
+          </div>
+          <div class="part" data-tags="sword,longsword,long sword,magic,upgrade,+1" onclick="expand(this)">
+            <div class="video-wrapper">
+            <video autoplay loop muted playsinline>
+            <source src="images/Weapons/FlamingSword.mp4" type="video/mp4">
+            </video>
+                            <div class="tag-2h">2-Handed Option</div>
+              </div>
+            <p class="part-label">Flaming Sword</p>
+          </div>
+          <div class="part" data-tags="glaive,polearm" onclick="expand(this)">
+          <div class="video-wrapper">
+            <video autoplay loop muted playsinline>
+            <source src="images/Weapons/Glaive.mp4" type="video/mp4">
+            </video>
+                            <div class="tag-2h">2-Handed Option</div>
+              </div>
+            <p class="part-label">Glaive</p>
+          </div>
+          <div class="part coming-soon">
+              <div class="placeholder">
+                <span>Coming Soon</span>
+              </div>
+              <p class="part-label">Rot Goddess Sword</p>
           </div>
         </div>
            <!-- scroll arrows -->
@@ -329,6 +378,12 @@
             </video>
             <p class="part-label">Commoner</p>
           </div>
+          <div class="part coming-soon">
+              <div class="placeholder">
+                <span>Coming Soon</span>
+              </div>
+              <p class="part-label">Rot Goddess</p>
+          </div>
         </div>
                    <!-- scroll arrows -->
             <div class="scroll-arrow left"></div>
@@ -366,6 +421,12 @@
             <source src="images/Legs/Commoner.mp4" type="video/mp4">
             </video>
             <p class="part-label">Commoner</p>
+          </div>
+          <div class="part coming-soon">
+              <div class="placeholder">
+                <span>Coming Soon</span>
+              </div>
+              <p class="part-label">Rot Goddess</p>
           </div>
         </div>
                            <!-- scroll arrows -->
@@ -411,6 +472,18 @@
             <source src="images/Arms/Skeleton.mp4" type="video/mp4">
             </video>
             <p class="part-label">Skeleton</p>
+          </div>
+          <div class="part coming-soon">
+              <div class="placeholder">
+                <span>Coming Soon</span>
+              </div>
+              <p class="part-label">Rot Goddess</p>
+          </div>
+          <div class="part coming-soon">
+              <div class="placeholder">
+                <span>Coming Soon</span>
+              </div>
+              <p class="part-label">Rot Goddess Prosthesis</p>
           </div>
         </div>
                                    <!-- scroll arrows -->
