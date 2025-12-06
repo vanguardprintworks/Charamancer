@@ -410,11 +410,13 @@ main {
 }
 
 .image-row img {
-  width: auto;       /* prevents images from stretching */
-  height: 300px;     /* set a consistent height */
-  object-fit: cover; /* crops if aspect ratios differ */
+  width: 300px;          /* base width */
+  max-width: 100%;       /* never overflow container */
+  height: auto;          /* maintain aspect ratio */
+  object-fit: cover;
   border-radius: 6px;
 }
+
 
 .split-container {
   display: flex;
@@ -597,6 +599,26 @@ main {
   pointer-events: none;
 }
 
+.part-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  background-color: #333;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1;
+  margin-top: 6px;
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+
+.part-btn:hover {
+  background-color: #444;
+  box-shadow: 0 0 0 2px #b4bcbf inset;
+}
+
 @media (max-width: 768px) {
   .split-container {
     flex-direction: column;   /* stack vertically */
@@ -638,4 +660,8 @@ main {
   .company-icon {
     display: none;
   }
+}
+
+.coming-item {
+  margin-bottom: 0.5rem; /* half a line of spacing */
 }
